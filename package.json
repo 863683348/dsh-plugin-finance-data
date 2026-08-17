@@ -1,0 +1,24 @@
+{
+  "name": "dsh-plugin-finance-data",
+  "version": "0.1.0",
+  "description": "Finance data toolkit for DeepSeek Harness agents: number/currency formatting (incl. Chinese wan/yi units), return & CAGR math, valuation and profitability ratios, PV/FV, risk metrics (volatility, drawdown, VaR, Sharpe), and a data-quality checklist",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": { ".": "./lib/index.js", "./finance": "./lib/finance.js", "./package.json": "./package.json" },
+  "files": ["lib", "cordis.patch.yml", "README.md", "README.zh.md"],
+  "scripts": { "test": "node --test test/", "prepublishOnly": "node --test test/" },
+  "keywords": ["deepseek-harness", "dsh", "dsh-plugin", "cordis", "plugin", "bundle", "finance", "data", "ratio", "risk"],
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-fs": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-system-prompt": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/863683348/dsh-plugin-finance-data.git" },
+  "homepage": "https://github.com/863683348/dsh-plugin-finance-data#readme",
+  "bugs": { "url": "https://github.com/863683348/dsh-plugin-finance-data/issues" },
+  "publishConfig": { "access": "public" }
+}
