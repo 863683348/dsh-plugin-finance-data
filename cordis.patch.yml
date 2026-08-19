@@ -1,0 +1,10 @@
+# dsh-plugin-finance-data — bundle patch layer.
+# Composes over an EMPTY entry list, so every patch here is an `insert`
+# appending composition rows. This row registers the `finance_data` model
+# tool and the finance prompt-guidance section host-wide.
+- insert:
+    - id: finance-data
+      name: 'dsh-plugin-finance-data'
+      config:
+        personaSection: true
+        sectionOrder: 6

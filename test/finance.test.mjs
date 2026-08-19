@@ -2,6 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   computeRatio,
+  portfolioWeights,
+  projectPlan,
+  rebalance,
   computeReturn,
   dataChecklist,
   formatNumber,
@@ -74,4 +77,52 @@ test("dataChecklist returns markdown list", () => {
   const out = dataChecklist();
   assert.ok(out.includes("As-of date"));
   assert.ok(out.includes("Units stated"));
+});
+
+
+test("projectPlan grows balance with contributions", () => {
+  const plan = projectPlan({ principal: 10000, contribution: 1000, annualRate: 12, years: 1, contributionFrequency: "month", steps: 12 });
+  assert.equal(plan.totalContributed, 12000);
+  assert.ok(plan.final > 10000 + 12000, "final exceeds invested");
+  assert.equal(plan.schedule.length, 12);
+  assert.ok(plan.text.startsWith("# Projection"));
+});
+
+test("projectPlan zero-rate math", () => {
+  const plan = projectPlan({ principal: 1000, contribution: 100, annualRate: 0, years: 1, steps: 12 });
+  assert.equal(plan.final, 2200);
+  assert.equal(plan.totalReturn, 0);
+});
+
+test("projectPlan applies inflation to real value", () => {
+  const plan = projectPlan({ principal: 1000, contribution: 0, annualRate: 0, years: 1, inflation: 10, steps: 12 });
+  assert.ok(plan.finalReal < plan.final, "real value below nominal with inflation");
+});
+
+test("projectPlan rejects bad inputs", () => {
+  assert.throws(() => projectPlan({ principal: -1 }));
+  assert.throws(() => projectPlan({ annualRate: -101 }));
+});
+
+test("portfolioWeights computes drift", () => {
+  const w = portfolioWeights({ targets: { equity: 60, bond: 40 }, values: { equity: 70000, bond: 30000 } });
+  assert.equal(w.totalValue, 100000);
+  const eq = w.rows.find((r) => r.name === "equity");
+  assert.equal(eq.actual, 70);
+  assert.equal(eq.drift, 10);
+});
+
+test("portfolioWeights requires weights summing to 100", () => {
+  assert.throws(() => portfolioWeights({ targets: { a: 50 } }));
+  assert.throws(() => portfolioWeights({ targets: {} }));
+});
+
+test("rebalance issues buy/sell orders", () => {
+  const r = rebalance({ targets: { equity: 60, bond: 40 }, values: { equity: 70000, bond: 30000 } });
+  const eq = r.orders.find((o) => o.name === "equity");
+  const bond = r.orders.find((o) => o.name === "bond");
+  assert.equal(eq.action, "sell");
+  assert.equal(eq.amount, 10000);
+  assert.equal(bond.action, "buy");
+  assert.equal(bond.amount, 10000);
 });

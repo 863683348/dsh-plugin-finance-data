@@ -19,7 +19,9 @@ dsh plugin --profile <profile> add dsh-plugin-finance-data
 | `ratio` | PE、PB、ROE、ROA、毛利率、净利率、产权比率 |
 | `value` | 现值、终值、隐含收益率 |
 | `risk` | 收益率序列的均值、波动率、最大回撤、历史 VaR(95)、夏普比率 |
-| `checklist` | 数据质量清单（来源、时点、单位、口径） |
+| `checklist` | 数据质量检查清单（来源、时点、单位、口径） |
+| `plan` | 定投/复利模拟（终值时间表、通胀调整实际价值） |
+| `portfolio` | 组合权重、漂移与再平衡指令（买/卖金额）
 
 ## 配置
 

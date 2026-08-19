@@ -20,6 +20,8 @@ Restart DSH. The `finance_data` tool is registered host-wide.
 | `value` | Present value, future value, implied rate |
 | `risk` | Mean, volatility, max drawdown, historical VaR(95), Sharpe from a return series |
 | `checklist` | Data-quality checklist (source, as-of date, units, definitions) |
+| `plan` | DCA / compound-interest projection — future value schedule, inflation-adjusted real value |
+| `portfolio` | Portfolio weights, drift vs targets, and rebalance buy/sell orders |
 
 ## Config
 
@@ -37,3 +39,8 @@ Pure logic (`lib/finance.js`) has zero DSH/Cordis imports and is unit-tested in 
 ## License
 
 MIT
+
+
+## Roadmap
+
+See [ROADMAP.md](./ROADMAP.md) — next five versions (v0.2.0 – v0.6.0): planning & portfolio, trends & peer comparison, cash-flow & sensitivity, bonds & FX/inflation, backtest & report export.
