@@ -16,8 +16,8 @@
     "README.zh.md"
   ],
   "scripts": {
-    "test": "node --test test/",
-    "prepublishOnly": "node --test test/"
+    "test": "node --test",
+    "prepublishOnly": "node --test"
   },
   "keywords": [
     "deepseek-harness",
