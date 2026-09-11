@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-finance-data",
-  "version": "0.2.0",
-  "description": "Finance data toolkit for DeepSeek Harness agents: number/currency formatting (incl. Chinese wan/yi units), return & CAGR math, valuation and profitability ratios, PV/FV, DCA/compound projections, portfolio weights & rebalancing, risk metrics (volatility, drawdown, VaR, Sharpe), and a data-quality checklist",
+  "version": "0.3.0",
+  "description": "Finance data toolkit for DeepSeek Harness agents: number/currency formatting (incl. Chinese wan/yi units), return & CAGR math, valuation and profitability ratios, PV/FV, DCA/compound projections, portfolio rebalancing, metric trend analysis, peer percentile comparison, risk metrics, and a data-quality checklist",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -33,7 +33,10 @@
     "dca",
     "compound",
     "portfolio",
-    "rebalance"
+    "rebalance",
+    "trend",
+    "percentile",
+    "peer"
   ],
   "license": "MIT",
   "dsh": {

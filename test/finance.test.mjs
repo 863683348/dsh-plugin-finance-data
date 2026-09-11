@@ -1,7 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  analyzeTrend,
   computeRatio,
+  peerCompare,
   portfolioWeights,
   projectPlan,
   rebalance,
@@ -125,4 +127,52 @@ test("rebalance issues buy/sell orders", () => {
   assert.equal(eq.amount, 10000);
   assert.equal(bond.action, "buy");
   assert.equal(bond.amount, 10000);
+});
+
+
+test("analyzeTrend reports direction, extremes and volatility", () => {
+  const res = analyzeTrend({ values: [1.2, 1.4, 1.3, 1.8, 2.1], labels: ["Q1", "Q2", "Q3", "Q4", "Q5"] });
+  assert.equal(res.n, 5);
+  assert.equal(res.direction, "up");
+  assert.equal(res.first, 1.2);
+  assert.equal(res.last, 2.1);
+  assert.equal(res.min, 1.2);
+  assert.equal(res.max, 2.1);
+  assert.ok(res.slope > 0);
+  assert.ok(res.stdev > 0);
+  assert.ok(res.text.startsWith("# Trend analysis"));
+  assert.ok(res.text.includes("| Q5 | 2.1 |"));
+});
+
+test("analyzeTrend detects a downtrend and percent change", () => {
+  const res = analyzeTrend({ values: [100, 90, 80] });
+  assert.equal(res.direction, "down");
+  assert.equal(res.change, -20);
+  assert.equal(res.changePct, -20);
+});
+
+test("analyzeTrend validates input", () => {
+  assert.throws(() => analyzeTrend({ values: [1] }));
+  assert.throws(() => analyzeTrend({ values: [] }));
+});
+
+test("peerCompare computes percentile rank and quartile position", () => {
+  const res = peerCompare({ value: 18.5, peers: [9, 12, 14, 15, 17, 19, 22, 26, 31], metric: "PE" });
+  assert.equal(res.n, 9);
+  assert.equal(res.p50, 17);
+  assert.ok(res.rank > 50 && res.rank < 70);
+  assert.equal(res.position, "above median");
+  assert.equal(res.favorable, true);
+  assert.ok(res.text.includes("Peer comparison: PE"));
+});
+
+test("peerCompare respects lower-is-better metrics", () => {
+  const res = peerCompare({ value: 8, peers: [10, 12, 14, 16, 18], metric: "PE", higherIsBetter: false });
+  assert.equal(res.favorable, true, "low PE is favorable");
+  assert.equal(res.position, "bottom quartile");
+});
+
+test("peerCompare validates input", () => {
+  assert.throws(() => peerCompare({ value: Number.NaN, peers: [1, 2] }));
+  assert.throws(() => peerCompare({ value: 1, peers: [] }));
 });

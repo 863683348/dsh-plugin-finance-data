@@ -22,6 +22,8 @@ Restart DSH. The `finance_data` tool is registered host-wide.
 | `checklist` | Data-quality checklist (source, as-of date, units, definitions) |
 | `plan` | DCA / compound-interest projection — future value schedule, inflation-adjusted real value |
 | `portfolio` | Portfolio weights, drift vs targets, and rebalance buy/sell orders |
+| `trend` | Metric time series — mean, extremes, direction (slope), volatility |
+| `peer` | Value vs peer group — P10/P50/P90 and percentile rank |
 
 ## Config
 
