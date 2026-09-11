@@ -1,0 +1,48 @@
+0 verbose cli C:\Users\l'x\.workbuddy\binaries\node\versions\22.22.2-2\node.exe C:\Users\l'x\.workbuddy\binaries\node\versions\22.22.2-2\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.7
+2 info using node@v22.22.2
+3 silly config load:file:C:\Users\l'x\.workbuddy\binaries\node\versions\22.22.2-2\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\l'x\WorkBuddy\2026-08-14-23-01-31\dsh-plugin-finance-data\.npmrc
+5 silly config load:file:F:\AI-2026\dsh-xiaoxiaoplugins\.npmrc-temp
+6 silly config load:file:C:\Users\l'x\.workbuddy\binaries\node\versions\22.22.2-2\etc\npmrc
+7 verbose title npm publish
+8 verbose argv "publish" "--ignore-scripts" "--cache" "C:\\Users\\l'x\\WorkBuddy\\2026-08-14-23-01-31\\dsh-plugin-finance-data\\.npm-cache-pub2" "--registry" "https://registry.npmjs.org"
+9 verbose logfile logs-max:10 dir:C:\Users\l'x\WorkBuddy\2026-08-14-23-01-31\dsh-plugin-finance-data\.npm-cache-pub2\_logs\2026-09-11T01_20_03_698Z-
+10 verbose logfile C:\Users\l'x\WorkBuddy\2026-08-14-23-01-31\dsh-plugin-finance-data\.npm-cache-pub2\_logs\2026-09-11T01_20_03_698Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose publish [ '.' ]
+13 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+14 notice
+15 notice package: dsh-plugin-finance-data@0.3.0
+16 notice Tarball Contents
+17 notice 1.1kB LICENSE
+17 notice 2.0kB README.md
+17 notice 1.5kB README.zh.md
+17 notice 392B cordis.patch.yml
+17 notice 14.6kB lib/finance.js
+17 notice 11.3kB lib/index.js
+17 notice 1.7kB package.json
+18 notice Tarball Details
+19 notice name: dsh-plugin-finance-data
+20 notice version: 0.3.0
+21 notice filename: dsh-plugin-finance-data-0.3.0.tgz
+22 notice package size: 11.0 kB
+23 notice unpacked size: 32.6 kB
+24 notice shasum: 9e509014f92dcb68bf7cf2cb9016a4d9553a8f54
+25 notice integrity: sha512-LufShBHgeXT04[...]3lpLJ3qCzUbVA==
+26 notice total files: 7
+27 notice
+28 notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+29 http fetch GET 200 https://registry.npmjs.org/npm 2908ms
+30 http fetch PUT 200 https://registry.npmjs.org/dsh-plugin-finance-data 3796ms
+31 verbose cwd C:\Users\l'x\WorkBuddy\2026-08-14-23-01-31\dsh-plugin-finance-data
+32 verbose os Windows_NT 10.0.26200
+33 verbose node v22.22.2
+34 verbose npm  v10.9.7
+35 notice
+35 notice New major version of npm available! 10.9.7 -> 12.0.2
+35 notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+35 notice To update run: npm install -g npm@12.0.2
+35 notice  { force: true, [Symbol(proc-log.meta)]: true }
+36 verbose exit 0
+37 info ok

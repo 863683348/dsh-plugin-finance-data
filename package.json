@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-finance-data",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Finance data toolkit for DeepSeek Harness agents: number/currency formatting (incl. Chinese wan/yi units), return & CAGR math, valuation and profitability ratios, PV/FV, DCA/compound projections, portfolio rebalancing, metric trend analysis, peer percentile comparison, risk metrics, and a data-quality checklist",
   "type": "module",
   "main": "lib/index.js",
