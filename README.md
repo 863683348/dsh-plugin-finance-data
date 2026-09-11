@@ -4,7 +4,7 @@ A **finance data toolkit** for [DeepSeek Harness](https://github.com/deepseek-ai
 
 ## Compatibility
 
-Tool schemas are validated against the `@deepseek-ai/dsh-tools` value-schema DSL (compiled at plugin load). 0.3.1 fixes a schema violation that made the host abort the whole profile boot on DSH ≥ 0.1.0-rc.6 with `unsupported JSON schema: schema.required is not supported by the value schema DSL`. If you installed an affected version and your DSH no longer starts, upgrade to 0.3.1 (or remove the plugin from the profile) — no data is lost.
+Tool schemas are validated against the `@deepseek-ai/dsh-tools` value-schema DSL at plugin load (checked against dsh-tools 0.1.0-rc.6 and 0.1.1-rc.2). Earlier releases used JSON-Schema `required` at the root of `output.schema` and closed nested objects without declared properties, which made the host abort the whole profile boot with `unsupported JSON schema: schema.required is not supported by the value schema DSL` and could reject the tool's own results. Current releases fix both; if an affected version left your DSH unable to start, remove the plugin from the profile (or upgrade) — no data is lost.
 
 ## Install
 
